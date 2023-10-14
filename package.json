@@ -1,5 +1,5 @@
 {
-  "name": "halocms-demo",
+  "name": "@golden-circuit-technologies/halocms-demo",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -16,10 +16,9 @@
   },
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "npm run clean && npm run build:full",
-    "build:common": "npm run clean && npm run build:swc",
-    "build:swc": "swc ./src -d ./dist/src",
-    "build:full": "tsc && tsc-alias"
+    "build": "npm run clean && npm run build:vite",
+    "build:vite": "vite build -c vite.config.ts",
+    "serve:client": "vite serve -c vite.config.ts"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.62",
