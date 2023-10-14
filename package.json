@@ -18,7 +18,7 @@
     "clean": "rimraf ./dist",
     "build": "npm run clean && npm run build:vite",
     "build:vite": "vite build -c vite.config.ts",
-    "serve:client": "vite serve -c vite.config.ts"
+    "serve": "vite serve -c vite.config.ts"
   },
   "devDependencies": {
     "@atomicdesign/atomic-engine": "^1.0.0",
