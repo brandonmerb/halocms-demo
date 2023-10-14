@@ -6,15 +6,13 @@ import swc from 'rollup-plugin-swc';
 // which confuse Vite & SWC during the build
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-import dts from 'vite-plugin-dts';
+// Our Atomic Engine plugins
+import { viteOriginDevServerPlugin } from '@atomicdesign/atomic-engine';
 
 export default defineConfig((config: ConfigEnv): UserConfig => {
   let plugins = [
     tsconfigPaths(),
     splitVendorChunkPlugin(),
-    dts({
-      rollupTypes: true
-    }),
     swc({
       configFile: "./.swcrc",
       rollup: {
@@ -22,7 +20,9 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
         exclude: ""
       },
     }),
-    vue()
+    vue(),
+
+    viteOriginDevServerPlugin()
   ]
 
   return {
