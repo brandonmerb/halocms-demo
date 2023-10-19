@@ -15,10 +15,9 @@
     "@golden-circuit-technologies/halocms-sdk": "1.0.0"
   },
   "scripts": {
-    "clean": "rimraf ./dist",
-    "build": "npm run clean && npm run build:vite",
-    "build:vite": "vite build -c vite.config.ts",
-    "serve": "vite serve -c vite.config.ts"
+    "prebuild": "rimraf ./dist",
+    "build": "vite build -c ./config/vite.config.ts",
+    "serve": "vite serve -c ./config/vite.config.ts"
   },
   "devDependencies": {
     "@atomicdesign/atomic-engine": "^1.0.0",
@@ -37,8 +36,8 @@
     "unplugin-swc": "^1.4.3"
   },
   "files": [
-    "dist/**/*.ts",
-    "dist/**/*.d.ts",
-    "dist/**/*.js"
+    "dist",
+    "src",
+    "package.json"
   ]
 }

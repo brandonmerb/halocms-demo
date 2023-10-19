@@ -1,8 +1,0 @@
-{
-  "name": "@golden-circuit-technologies/halocms-demo",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
-  "sourceRoot": "apps/@golden-circuit-technologies/halocms-demo/src",
-  "targets": {},
-  "tags": []
-}
