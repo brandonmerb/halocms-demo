@@ -13,10 +13,26 @@ import swc from 'unplugin-swc'
 // We use Vue in this project, so the compiler needs a way to handle that via plugins
 import vue from '@vitejs/plugin-vue'
 
-import { viteOriginDevServerPlugin } from "@atomicdesign/atomic-engine";
-
-
 export default defineConfig((config: ConfigEnv): UserConfig => {
+  /**
+   * Load the env files from our ./config directory so that we can look
+   * for ATOMIC_DESIGN_BUILD variables. You can change this flag locally
+   * without accidentally comitting it by creating a .env.local file and
+   * changing the flag there. It takes priority over the default .env file
+   */
+  const env = loadEnv(config.mode, "./config", "ATOMIC_DESIGN_BUILD");
+  /**
+   * If we find ATOMIC_DESIGN_BUILD_USE_TYPESCRIPT_IMPORTS set to true then
+   * we'll enable a export condition for "atomicdesign:local". This will trigger
+   * vite to look for the atomicdesign:local field on exports. The libraries in
+   * this repo are configured to serve source files directly in this mode, for
+   * faster development
+   */
+  let conditions: string[] = [];
+  if (env?.ATOMIC_DESIGN_BUILD_USE_TYPESCRIPT_IMPORTS === "true") {
+    conditions.push("atomicdesign:local");
+  }
+
   let plugins = [
     tsconfigPaths(),
     splitVendorChunkPlugin(),
@@ -26,36 +42,15 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
     swc.vite({
       configFile: './config/.swcrc'
     }),
-    vue(),
-
-    viteOriginDevServerPlugin()
+    vue()
   ]
+
   return {
     plugins: plugins,
-    build: {
-      rollupOptions: {
-
-      }
+    envDir: "./config",
+    resolve: {
+      conditions: conditions
     },
-    // build: {
-    //   rollupOptions: {
-    //     preserveEntrySignatures: 'strict',
-    //     input: {
-    //       "defaults": "./src/index.ts",
-    //       "authentication": "./src/modules/authentication/index.ts",
-    //       "layout": "./src/modules/layout/index.ts",
-    //     },
-    //     output: {
-    //       entryFileNames: '[name].js'
-    //     },
-    //     external: [
-    //       "vue",
-    //       "@atomicdesign/atomic-singularity",
-    //       "@atomicdesign/atomic-vue",
-    //       "@atomicdesign/atomic-origin"
-    //     ]
-    //   }
-    // },
 
     clearScreen: true,
     esbuild: false,
