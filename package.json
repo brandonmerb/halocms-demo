@@ -11,8 +11,10 @@
   "dependencies": {
     "@atomicdesign/atomic-origin": "1.0.0",
     "@atomicdesign/atomic-singularity": "1.0.0",
+    "@atomicdesign/atomic-singularity-tsyringe-wrapper": "1.0.0",
     "@atomicdesign/atomic-vue": "1.0.0",
-    "@golden-circuit-technologies/halocms-sdk": "1.0.0"
+    "@golden-circuit-technologies/halocms-sdk": "1.0.0",
+    "reflect-metadata": "^0.1.13"
   },
   "scripts": {
     "prebuild": "rimraf ./dist",
@@ -31,9 +33,9 @@
     "tsc-alias": "^1.8.8",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2",
+    "unplugin-swc": "^1.4.3",
     "vite": "^4.4.11",
-    "vite-tsconfig-paths": "^4.2.1",
-    "unplugin-swc": "^1.4.3"
+    "vite-tsconfig-paths": "^4.2.1"
   },
   "files": [
     "dist",
