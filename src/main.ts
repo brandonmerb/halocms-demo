@@ -9,7 +9,7 @@ import { useTSyringe } from "@atomicdesign/atomic-singularity-tsyringe-wrapper";
 import { HaloCMSSDKDefaultModules } from '@golden-circuit-technologies/halocms-sdk';
 useAtomicApi()
   .use(useAtomicVue())
-  .use(useTSyringe)
-  .use(useAtomicSDK)
-  .use(HaloCMSSDKDefaultModules)
+  .use(useTSyringe())
+  .use(useAtomicSDK())
+  .use(HaloCMSSDKDefaultModules())
   .start()
