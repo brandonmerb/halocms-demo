@@ -7,9 +7,10 @@ import { useTSyringe } from "@atomicdesign/atomic-singularity-tsyringe-wrapper";
 //import { OriginNebula } from '@atomicdesign/atomic-origin';
 
 import { HaloCMSSDKDefaultModules } from '@golden-circuit-technologies/halocms-sdk';
+
 useAtomicApi()
   .use(useAtomicVue())
   .use(useTSyringe())
-  .use(useAtomicSDK())
   .use(HaloCMSSDKDefaultModules())
+  .use(useAtomicSDK())
   .start()
