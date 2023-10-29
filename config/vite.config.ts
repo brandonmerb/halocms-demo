@@ -13,6 +13,8 @@ import swc from 'unplugin-swc'
 // We use Vue in this project, so the compiler needs a way to handle that via plugins
 import vue from '@vitejs/plugin-vue'
 
+import vuetify from 'vite-plugin-vuetify';
+
 export default defineConfig((config: ConfigEnv): UserConfig => {
   /**
    * Load the env files from our ./config directory so that we can look
@@ -42,7 +44,8 @@ export default defineConfig((config: ConfigEnv): UserConfig => {
     swc.vite({
       configFile: './config/.swcrc'
     }),
-    vue()
+    vue(),
+    vuetify()
   ]
 
   return {

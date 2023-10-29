@@ -14,7 +14,8 @@
     "@atomicdesign/atomic-singularity-tsyringe-wrapper": "1.0.0",
     "@atomicdesign/atomic-vue": "1.0.0",
     "@golden-circuit-technologies/halocms-sdk": "1.0.0",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "vite-plugin-vuetify": "^1.0.2"
   },
   "scripts": {
     "prebuild": "rimraf ./dist",
